@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_add_project_gradient"
+    android:padding="20dp"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Top bar -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:src="@drawable/ic_back"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"/>
+
+            <TextView
+                android:text="Add Project"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:src="@drawable/ic_profile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="6dp"/>
+        </LinearLayout>
+
+        <!-- Task Group -->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/ic_folder"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <TextView
+                    android:text="Task Group"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinnerGroup"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Project Name -->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Project Name"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/editProjectName"
+                android:hint="Grocery Shopping App"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Description -->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Description"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/editDescription"
+                android:hint="Enter project description..."
+                android:minLines="4"
+                android:textSize="15sp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Start Date -->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_calendar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+
+            <TextView
+                android:id="@+id/textStartDate"
+                android:text="01 May, 2022"
+                android:layout_marginLeft="12dp"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:src="@drawable/ic_dropdown"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+        <!-- End Date -->
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:src="@drawable/ic_calendar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+
+            <TextView
+                android:id="@+id/textEndDate"
+                android:text="30 June, 2022"
+                android:layout_marginLeft="12dp"
+                android:textSize="16sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:src="@drawable/ic_dropdown"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+        <!-- Logo -->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:src="@drawable/ic_project_logo"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+
+            <Button
+                android:id="@+id/btnChangeLogo"
+                android:text="Change Logo"
+                android:textColor="#F0F6FF"
+                android:background="@drawable/bg_button_light"
+                android:layout_marginLeft="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Add Project -->
+        <Button
+            android:id="@+id/btnAddProject"
+            android:text="Add Project"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_button_primary"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
