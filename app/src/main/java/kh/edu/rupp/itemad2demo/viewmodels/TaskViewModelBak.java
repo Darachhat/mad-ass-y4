@@ -24,7 +24,15 @@ public class TaskViewModelBak extends ViewModel {
     private MutableLiveData<List<Task>> taskLiveData = new MutableLiveData<>(new ArrayList<>());
     public void addTask(String title){
         List<Task> currentTasks = taskLiveData.getValue();
-        currentTasks.add(new Task(title));
+        currentTasks.add(new Task(
+                title,                   // main title
+                "New task created",      // subtitle (placeholder)
+                "08:00 PM",              // time (you can change)
+                "To-do",                 // default status
+                "General",               // category
+                0xFF6FA8FF               // color (blue)
+        ));
+
         taskLiveData.setValue(currentTasks);
     }
     public LiveData<List<Task>> getTasks(){
