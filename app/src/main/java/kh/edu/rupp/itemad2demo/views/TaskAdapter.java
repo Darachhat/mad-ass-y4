@@ -1,71 +1,87 @@
 package kh.edu.rupp.itemad2demo.views;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import kh.edu.rupp.itemad2demo.R;
-import kh.edu.rupp.itemad2demo.databinding.ItemTaskBinding;
 import kh.edu.rupp.itemad2demo.models.Task;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
-    private List<Task> items = new ArrayList<>();
+    private Context context;
+    private List<Task> taskList;
 
-    public void setItems(List<Task> newList) {
-        items = newList;
-        notifyDataSetChanged();
+    public TaskAdapter(Context context, List<Task> taskList) {
+        this.context = context;
+        this.taskList = taskList;
     }
 
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemTaskBinding binding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()),
-                R.layout.item_task,
-                parent,
-                false
-        );
-        return new TaskViewHolder(binding);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_task, parent, false);
+        return new TaskViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        Task task = items.get(position);
+        Task task = taskList.get(position);
 
-        holder.binding.textTitle.setText(task.getTitle());
-        holder.binding.textSubtitle.setText(task.getSubtitle());
-        holder.binding.textTime.setText(task.getTime());
-        holder.binding.textStatus.setText(task.getStatus());
+        holder.textProject.setText(task.getProjectName());
+        holder.textTaskName.setText(task.getTaskName());
+        holder.textTime.setText(task.getTime());
+        holder.textStatus.setText(task.getStatus());
 
-        // color status badge
-        Drawable bg = holder.binding.textStatus.getBackground();
-        if (bg != null) {
-            Drawable wrapped = DrawableCompat.wrap(bg);
-            DrawableCompat.setTint(wrapped, task.getStatusColor());
-            holder.binding.textStatus.setBackground(wrapped);
+        // Apply correct status background + color
+        switch (task.getStatus()) {
+
+            case "Done":
+                holder.textStatus.setBackgroundResource(R.drawable.bg_status_done);
+                holder.textStatus.setTextColor(0xFF6A4CFF);
+                break;
+
+            case "In Progress":
+                holder.textStatus.setBackgroundResource(R.drawable.bg_status_progress);
+                holder.textStatus.setTextColor(0xFFEA8C3D);
+                break;
+
+            default:  // To-do
+                holder.textStatus.setBackgroundResource(R.drawable.bg_status_todo);
+                holder.textStatus.setTextColor(0xFF4A90E2);
+                break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return taskList.size();
+    }
+
+    // Update list dynamically
+    public void updateTasks(List<Task> tasks) {
+        this.taskList = tasks;
+        notifyDataSetChanged();
     }
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
-        ItemTaskBinding binding;
 
-        public TaskViewHolder(@NonNull ItemTaskBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
+        TextView textProject, textTaskName, textTime, textStatus;
+
+        public TaskViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            textProject = itemView.findViewById(R.id.textProject);
+            textTaskName = itemView.findViewById(R.id.textTaskName);
+            textTime = itemView.findViewById(R.id.textTime);
+            textStatus = itemView.findViewById(R.id.textStatus);
         }
     }
 }
